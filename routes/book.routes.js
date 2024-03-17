@@ -70,32 +70,6 @@ bookRouter.delete('/delete/:id',auth,access(["admin"]),async(req,res)=>{
 })
 
 
-
-//
-
-// bookRouter.post('/borrow/:id', auth, access(['reader','admin']), async (req, res) => {
-//     const { id } = req.params;
-//     try {
-//         const book = await BookModel.findById(id);
-//         console.log(book);
-//         if (!book) {
-//             return res.status(404).json({ msg: "Book not found" });
-//         }
-//         if (book.owner) {
-//             return res.status(400).json({ msg: "Book is not available for borrowing" });
-//         }
-//         // Update book ownership
-//         book.owner = userID; // Assuming req.user.id contains the ID of the borrowing user
-//         await book.save();
-//         res.status(200).json({ msg: "Book borrowed successfully" });
-//     } catch (err) {
-//         res.status(500).json({ msg: "Server error" });
-//     }
-// });
-
-
-//
-
 const BorrowModel = require('../models/borrow.model');
 
 // Borrow a book
@@ -142,7 +116,6 @@ bookRouter.post('/borrow/:id', auth, access(['reader','admin']), async (req, res
 bookRouter.post('/buy/:id', auth, access(['reader', 'admin']), async (req, res) => {
     const { id } = req.params;
     try {
-        // Find the book by ID
         const book = await BookModel.findById(id);
         
         // Check if the book exists
