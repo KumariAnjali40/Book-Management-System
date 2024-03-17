@@ -5,7 +5,7 @@ const borrowSchema = new mongoose.Schema({
     borrower: { type: mongoose.Schema.Types.ObjectId, ref: 'UserModel' },
     borrowedAt: { type: Date, default: Date.now },
     returnedAt: { type: Date },
-    status: { type: String, enum: ['pending', 'approved', 'rejected', 'returned'], default: 'pending' }
+    // status: { type: String, enum: ['pending', 'approved', 'rejected', 'returned'], default: 'pending' }
 });
 
 module.exports = mongoose.model('Borrow', borrowSchema);
