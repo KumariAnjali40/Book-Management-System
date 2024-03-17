@@ -31,7 +31,6 @@ const resolvers = {
     },
     Mutation: {
         registerUser: async (_, { name, email, pass, city, age, role }) => {
-            // Hash the password before saving it
             const hashedPassword = await bcrypt.hash(pass, 10);
             const user = new UserModel({ name, email, pass: hashedPassword, city, age, role });
             await user.save();
