@@ -1,0 +1,47 @@
+type User {
+    _id: ID!
+    name: String!
+    email: String!
+    pass: String!
+    city: String
+    age: Int
+    role: String
+}
+
+type Book {
+    _id: ID!
+    title: String!
+    genre: String!
+    author: String!
+    published_year: Int!
+    owner: User
+}
+
+type AuthTokens {
+    access_token: String!
+    refresh_token: String!
+}
+
+type Message {
+    msg: String!
+}
+
+type Query {
+    getUsers: [User]
+    getBooks: [Book]
+    getUser(id: ID!): User
+    getBook(id: ID!): Book
+}
+
+type Mutation {
+    registerUser(name: String!, email: String!, pass: String!, city: String, age: Int, role: String!): User
+    loginUser(email: String!, pass: String!): AuthTokens
+    logoutUser: Message
+    addBook(title: String!, genre: String!, author: String!, published_year: Int!): Book
+    borrowBook(id: ID!): Message
+    buyBook(id: ID!): Message
+    updateUser(id: ID!, name: String!, email: String!, city: String, age: Int, role: String!): User
+    deleteUser(id: ID!): Message
+    updateBook(id: ID!, title: String!, genre: String!, author: String!, published_year: Int!): Book
+    deleteBook(id: ID!): Message
+}
